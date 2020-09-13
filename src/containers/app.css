@@ -426,6 +426,9 @@ body {
   border: none;
   outline: none;
   box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .our-people .edit-button {
@@ -458,6 +461,9 @@ body {
 
 .our-people-grid .item {
   margin: 15px 10px;
+  border: none;
+  background-color: transparent;
+  outline: none;
 }
 
 .our-people-grid .card {
@@ -642,3 +648,75 @@ body {
 }
 
 /* ---------- End of Footer ---------- */
+
+/* ---------- Start of Modal ---------- */
+
+.custom-modal {
+  max-width: 600px;
+}
+
+.modal-content {
+  border-radius: 1rem;
+  border: none;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.modal-body img {
+  width: 150px;
+  border-radius: 1rem 0 0 1rem;
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .modal-body img {
+    width: 200px;
+  }
+}
+
+.modal-body .person .modal-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--light-black);
+  margin-bottom: 5px;
+}
+
+@media (min-width-768px) {
+  .modal-body .person .modal-title {
+    margin-bottom: 15px;
+  }
+}
+
+.modal-body .person .position,
+.modal-body .person .desc {
+  font-size: 0.8rem;
+  color: var(--light-black);
+}
+
+.modal-body .person .position {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .modal-body .person .position {
+    margin-bottom: 30px;
+  }
+}
+
+.modal-body .person .desc {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .modal-body .person .desc {
+    margin-right: 70px;
+  }
+}
+
+/* ---------- End of Modal ---------- */
