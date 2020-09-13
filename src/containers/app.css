@@ -498,13 +498,15 @@ body {
 }
 
 /* Contact Us */
-.contact-us.scale {
-  transform: scale(0.9);
+.contact-us {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 @media (min-width: 768px) {
   .contact-us.scale {
     transform: scale(0.8);
+    margin-bottom: 150px;
   }
 }
 
@@ -513,6 +515,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 25px;
+  margin-bottom: 25px;
   border-radius: 0.75rem;
   box-shadow: 0 1.35em 4.5em -0.05em rgba(10, 10, 10, 0.1),
     0 0 0 0.5px rgba(10, 10, 10, 0.02);
@@ -568,4 +571,57 @@ body {
 /* ---------- End of Main ---------- */
 
 /* ---------- Footer ---------- */
+
+.footer {
+  min-height: 150px;
+  background-color: var(--blue);
+  background-image: url(/static/media/footer-rounded-001.8f32841c.svg),
+    url(/static/media/footer-rounded-002.585b0c9a.svg);
+  background-position: -4% 173%, 130% 135%;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 54%, 37%;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    background-position: -4% 17%, 118% 22%;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 28%, 25%;
+  }
+}
+
+.footer .container {
+  margin: 0;
+  padding: 20px;
+}
+
+.footer .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.footer .logo img {
+  margin-right: 15px;
+}
+
+.footer .logo .title {
+  font-size: 1.2rem;
+}
+
+.footer h2,
+.footer p {
+  font-size: 1rem;
+}
+
+.footer h2 {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.footer p {
+  color: var(--light-blue);
+}
+
 /* ---------- End of Footer ---------- */
