@@ -1,3 +1,4 @@
+import * as contents from '../contents/navbar';
 import {
   Container,
   Form,
@@ -12,17 +13,17 @@ import SearchIcon from '../components/icons/search';
 
 export default () => {
   const links = [
-    { id: 1, title: 'Home', href: '#home' },
-    { id: 2, title: 'About Us', href: '#about-us' },
-    { id: 3, title: 'Services', href: '#services' },
-    { id: 4, title: 'Pricing', href: '#pricing' },
-    { id: 5, title: 'Careers', href: '#careers' },
+    { id: 1, title: contents.HOME, href: contents.HOME_URL },
+    { id: 2, title: contents.ABOUT_US, href: contents.ABOUT_US_URL },
+    { id: 3, title: contents.SERVICES, href: contents.SERVICES_URL },
+    { id: 4, title: contents.PRICING, href: contents.PRICING_URL },
+    { id: 5, title: contents.CAREERS, href: contents.CAREERS_URL },
   ];
   return (
     <Navbar expand="md">
       <Container>
-        <Navbar.Brand href="#">
-          <Image src={logo} alt="EeasyWork" />
+        <Navbar.Brand href={contents.HOME_URL}>
+          <Image src={logo} alt={contents.TITLE} />
         </Navbar.Brand>
         <Navbar.Toggle>
           <span aria-hidden="true"></span>
@@ -30,7 +31,7 @@ export default () => {
           <span aria-hidden="true"></span>
         </Navbar.Toggle>
         <Navbar.Collapse>
-          <Nav defaultActiveKey="#home" className="m-auto">
+          <Nav defaultActiveKey={contents.HOME_URL} className="m-auto">
             {links.map(({ id, title, href }) => (
               <Nav.Link href={href} key={id}>
                 {title}

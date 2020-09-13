@@ -1,0 +1,11 @@
+export const TITLE = 'Easy Work';
+export const HOME = 'Home';
+export const ABOUT_US = 'About Us';
+export const SERVICES = 'Services';
+export const PRICING = 'Pricing';
+export const CAREERS = 'Careers';
+export const HOME_URL = '#home';
+export const ABOUT_US_URL = '#about-us';
+export const SERVICES_URL = '#services';
+export const PRICING_URL = '#pricing';
+export const CAREERS_URL = '#careers';
