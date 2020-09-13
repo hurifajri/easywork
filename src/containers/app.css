@@ -39,7 +39,7 @@ body {
 }
 
 .container.section {
-  margin-bottom: 85px;
+  margin-bottom: 50px;
 }
 
 @media (min-width: 1200px) {
@@ -329,6 +329,10 @@ body {
   box-shadow: none;
 }
 
+.testimonial-slider .slick-slider {
+  margin-bottom: 50px;
+}
+
 @media (min-width: 576px) {
   .testimonial-slider .slick-slide {
     padding: 0 12px;
@@ -478,6 +482,18 @@ body {
 .our-people-grid .card-subtitle {
   font-size: 0.6rem;
   color: var(--light-grey);
+}
+
+/* Partners */
+.partners-list .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partners-list img {
+  width: 50px;
+  margin: 15px;
 }
 
 /* ---------- End of Main ---------- */
