@@ -39,13 +39,7 @@ body {
 }
 
 .container.section {
-  margin-bottom: 100px;
-}
-
-@media (min-width: 768px) {
-  .container.section {
-    margin-bottom: 125px;
-  }
+  margin-bottom: 85px;
 }
 
 @media (min-width: 1200px) {
@@ -398,6 +392,16 @@ body {
 }
 
 /* Our People */
+.our-people .right-wrapper {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .our-people .right-wrapper {
+    flex-direction: row;
+  }
+}
+
 .our-people .icon-wrapper {
   background-color: var(--pink);
   box-shadow: var(--pink) 0 4px 8px -2px;
@@ -423,6 +427,13 @@ body {
 .our-people .edit-button {
   color: var(--orange);
   background-color: var(--light-orange);
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .our-people .edit-button {
+    margin-bottom: 0;
+  }
 }
 
 .our-people .add-button {
@@ -432,8 +443,13 @@ body {
 
 .our-people-grid {
   justify-content: center;
-  margin-left: -25px;
-  margin-right: -25px;
+}
+
+@media (min-width: 992px) {
+  .our-people-grid {
+    margin-left: -60px;
+    margin-right: -60px;
+  }
 }
 
 .our-people-grid .item {

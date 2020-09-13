@@ -20,7 +20,7 @@ export default ({
         {title}
       </h2>
     </div>
-    <div style={rightStyle} className={rightClassName}>
+    <div style={rightStyle()} className={rightClassName}>
       {button}
     </div>
   </Container>
@@ -49,11 +49,17 @@ const leftStyle = {
   alignItems: 'center',
 };
 
-const rightStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  minWidth: '117px',
+const rightStyle = () => {
+  const query = '(min-width: 1200px)';
+  const mediaQueryList = window.matchMedia(query);
+  const largeScreen = mediaQueryList.matches;
+
+  return {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minWidth: `${largeScreen ? '117px' : 'unset'}`,
+  };
 };
 
 const iconWrapperStyle = () => {

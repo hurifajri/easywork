@@ -34,6 +34,7 @@ import person009 from '../assets/images/person-009.jpg';
 import person010 from '../assets/images/person-010.jpg';
 import SearchIcon from '../components/icons/search';
 import SectionHeader from '../components/section-header';
+import SectionTitle from '../components/section-title';
 import Slider from 'react-slick';
 
 export default () => {
@@ -301,6 +302,7 @@ export default () => {
               <Col>
                 <SectionHeader
                   title="Our important people is listed here"
+                  rightClassName="right-wrapper"
                   iconWrapperClassName="icon-wrapper"
                   icon={
                     <HappyIcon
@@ -324,8 +326,8 @@ export default () => {
                   className="item"
                   xs={12}
                   sm={5}
-                  md={4}
-                  lg={3}
+                  md={3}
+                  lg={2}
                   xl={2}
                   key={id}
                 >
@@ -338,6 +340,14 @@ export default () => {
                   </Card>
                 </Col>
               ))}
+            </Row>
+          </Container>
+          {/* Clients */}
+          <Container className="section">
+            <Row className="clients">
+              <Col>
+                <SectionTitle>We've worked with</SectionTitle>
+              </Col>
             </Row>
           </Container>
         </Col>
