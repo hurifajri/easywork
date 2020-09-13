@@ -9,6 +9,7 @@ import {
   Container,
   Form,
   FormControl,
+  Image,
   Jumbotron,
   Nav,
   Navbar,
@@ -16,19 +17,26 @@ import {
 } from 'react-bootstrap';
 import React, { useRef } from 'react';
 import ArrowIcon from '../components/icons/arrow';
-import contentOne from '../assets/images/content-001.png';
-import contentTwo from '../assets/images/content-002.png';
+import HappyIcon from '../components/icons/happy';
+import intro001 from '../assets/images/intro-001.png';
+import intro002 from '../assets/images/intro-002.png';
 import logo from '../assets/images/logo.png';
 import LoveIcon from '../components/icons/love';
-import personOne from '../assets/images/person-001.jpg';
-import personThree from '../assets/images/person-002.jpg';
-import personTwo from '../assets/images/person-003.jpg';
+import person001 from '../assets/images/person-001.jpg';
+import person002 from '../assets/images/person-002.jpg';
+import person003 from '../assets/images/person-003.jpg';
+import person004 from '../assets/images/person-004.jpg';
+import person005 from '../assets/images/person-005.jpg';
+import person006 from '../assets/images/person-006.jpg';
+import person007 from '../assets/images/person-007.jpg';
+import person008 from '../assets/images/person-008.jpg';
+import person009 from '../assets/images/person-009.jpg';
+import person010 from '../assets/images/person-010.jpg';
 import SearchIcon from '../components/icons/search';
+import SectionHeader from '../components/section-header';
 import Slider from 'react-slick';
 
 export default () => {
-  const refContainer = useRef(null);
-
   const links = [
     { id: 1, title: 'Home', href: '#home' },
     { id: 2, title: 'About Us', href: '#about-us' },
@@ -42,7 +50,7 @@ export default () => {
       id: 1,
       name: 'David Champion',
       role: 'CEO of iCloud',
-      img: personOne,
+      img: person001,
       message:
         'System is excelent. It has made my system user experience to become one of the easiest!',
     },
@@ -50,7 +58,7 @@ export default () => {
       id: 2,
       name: 'David Frank van Hord',
       role: 'CEO of Marks.co',
-      img: personTwo,
+      img: person002,
       message:
         'I just wanted to share a quick note and let you know that you guys do a really good job.',
     },
@@ -58,20 +66,21 @@ export default () => {
       id: 3,
       name: 'Lucas Bond',
       role: 'BOD of Skyscanner',
-      img: personThree,
+      img: person003,
       message:
         "Now it's almost like having a designer right. I just choose the page, make the change.",
     },
     {
       id: 4,
-      name: 'Lucas Bond',
-      role: 'BOD of Skyscanner',
-      img: personThree,
+      name: 'David Champion',
+      role: 'CEO of iCloud',
+      img: person001,
       message:
-        "Now it's almost like having a designer right. I just choose the page, make the change.",
+        'System is excelent. It has made my system user experience to become one of the easiest!',
     },
   ];
 
+  const refContainer = useRef(null);
   const settings = {
     dots: true,
     // infinite: true,
@@ -97,23 +106,68 @@ export default () => {
       },
     ],
   };
+
+  const people = [
+    {
+      id: 1,
+      name: 'Frank Ltarnam',
+      role: 'CEO',
+      img: person004,
+    },
+    {
+      id: 2,
+      name: 'Bob Shefley',
+      role: 'UI/UX Designer',
+      img: person005,
+    },
+    {
+      id: 3,
+      name: 'Jason Stewars',
+      role: 'Full-Stack Developer',
+      img: person006,
+    },
+    {
+      id: 4,
+      name: 'Sabrina Rachel',
+      role: 'Marketing',
+      img: person007,
+    },
+    {
+      id: 5,
+      name: 'Marissa Lawren',
+      role: 'Customer Support',
+      img: person008,
+    },
+    {
+      id: 6,
+      name: 'Romane Regad',
+      role: 'Jr UI/UX Designer',
+      img: person009,
+    },
+    {
+      id: 7,
+      name: 'Tania Ferreira',
+      role: 'Business Analyst',
+      img: person010,
+    },
+  ];
   return (
     <Container fluid>
       {/* Header */}
       <Row className="header">
         <Col>
           {/* Navbar */}
-          <Navbar expand="lg">
+          <Navbar expand="md">
             <Container>
               <Navbar.Brand href="#">
-                <img src={logo} width={60} alt="Logo" />
+                <Image src={logo} alt="EeasyWork" />
               </Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav">
+              <Navbar.Toggle>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </Navbar.Toggle>
-              <Navbar.Collapse id="basic-navbar-nav">
+              <Navbar.Collapse>
                 <Nav defaultActiveKey="#home" className="m-auto">
                   {links.map(({ id, title, href }) => (
                     <Nav.Link href={href} key={id}>
@@ -135,11 +189,13 @@ export default () => {
           {/* Jumbotron */}
           <Jumbotron fluid>
             <Container>
-              <h1 className="heading">Make development easy with us.</h1>
-              <p className="subheading">
-                Doing development can never be easy, and it takes time and
-                resources. We at EasyWork has the solution.
-              </p>
+              <div className="content">
+                <h1 className="title">Make development easy with us.</h1>
+                <p className="subtitle">
+                  Doing development can never be easy, and it takes time and
+                  resources. We at EasyWork has the solution.
+                </p>
+              </div>
             </Container>
           </Jumbotron>
         </Col>
@@ -147,15 +203,13 @@ export default () => {
       {/* Main */}
       <Row className="main">
         <Col>
-          {/* Content */}
-          <Row className="content">
-            <Col xs={12} md={6} lg={7} className="image">
-              <Container>
-                <img src={contentOne} alt="First content" />
-              </Container>
-            </Col>
-            <Col xs={12} md={6} lg={5} className="text">
-              <Container>
+          {/* Intro */}
+          <Container className="section">
+            <Row className="intro">
+              <Col xs={12} md={6} lg={7} className="image">
+                <Image src={intro001} alt="First intro" />
+              </Col>
+              <Col xs={12} md={6} lg={5} className="text">
                 <h2 className="title">
                   We can give you our best user experience to your system
                 </h2>
@@ -168,12 +222,13 @@ export default () => {
                   also the leap into electronic typesetting, remaining
                   essentially unchanged.
                 </p>
-              </Container>
-            </Col>
-          </Row>
-          <Row className="content">
-            <Col xs={12} md={6} lg={5} className="text">
-              <Container>
+              </Col>
+            </Row>
+            <Row className="intro">
+              <Col xs={12} md={{ span: 6, order: 2 }} lg={7} className="image">
+                <Image src={intro002} alt="Second intro" />
+              </Col>
+              <Col xs={12} md={{ span: 6, order: 1 }} lg={5} className="text">
                 <h2 className="title">
                   Easy access. Whenever, wherever you want
                 </h2>
@@ -186,47 +241,41 @@ export default () => {
                   also the leap into electronic typesetting, remaining
                   essentially unchanged.
                 </p>
-              </Container>
-            </Col>
-            <Col xs={12} md={6} lg={7} className="image">
-              <Container>
-                <img src={contentTwo} alt="Second content" />
-              </Container>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          </Container>
           {/* Testimonial */}
-          <Row className="testimonial">
-            <Col>
-              <Container>
-                <div className="testimonial-heading">
-                  <span className="icon-wrapper">
+          <Container className="section">
+            <Row className="testimonial">
+              <Col>
+                <SectionHeader
+                  title="What other people say about our service"
+                  rightClassName="right-wrapper"
+                  iconWrapperClassName="icon-wrapper"
+                  icon={
                     <LoveIcon
                       size={13}
                       color="var(--white)"
                       className="love-icon"
                     />
-                  </span>
-                  <h2 className="title">
-                    What other people say about our service
-                  </h2>
-                </div>
-                <Button
-                  className="next-button"
-                  onClick={() => refContainer.current.slickNext()}
-                >
-                  <ArrowIcon
-                    size={15}
-                    color="var(--purple)"
-                    className="arrow-icon"
-                  />
-                </Button>
-              </Container>
-            </Col>
-          </Row>
-          {/* Testimonial Slider */}
-          <Row className="testimonial-slider">
-            <Col>
-              <Container fluid>
+                  }
+                  button={
+                    <Button
+                      className="next-button"
+                      onClick={() => refContainer.current.slickNext()}
+                    >
+                      <ArrowIcon
+                        size={15}
+                        color="var(--purple)"
+                        className="arrow-icon"
+                      />
+                    </Button>
+                  }
+                />
+              </Col>
+            </Row>
+            <Row className="testimonial-slider">
+              <Col>
                 <Slider ref={refContainer} {...settings}>
                   {testimonials.map(person => (
                     <Card key={person.id}>
@@ -234,9 +283,7 @@ export default () => {
                         <Card.Img src={person.img} />
                         <div>
                           <Card.Title>{person.name}</Card.Title>
-                          <Card.Subtitle className="text-muted">
-                            {person.role}
-                          </Card.Subtitle>
+                          <Card.Subtitle>{person.role}</Card.Subtitle>
                         </div>
                       </div>
                       <Card.Body>
@@ -245,9 +292,54 @@ export default () => {
                     </Card>
                   ))}
                 </Slider>
-              </Container>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          </Container>
+          {/* Our people */}
+          <Container className="section">
+            <Row className="our-people">
+              <Col>
+                <SectionHeader
+                  title="Our important people is listed here"
+                  iconWrapperClassName="icon-wrapper"
+                  icon={
+                    <HappyIcon
+                      size={13}
+                      color="var(--white)"
+                      className="happy-icon"
+                    />
+                  }
+                  button={
+                    <>
+                      <Button className="edit-button">Edit</Button>
+                      <Button className="add-button">Add</Button>
+                    </>
+                  }
+                />
+              </Col>
+            </Row>
+            <Row className="our-people-grid">
+              {people.map(({ id, name, role, img }) => (
+                <Col
+                  className="item"
+                  xs={12}
+                  sm={5}
+                  md={4}
+                  lg={3}
+                  xl={2}
+                  key={id}
+                >
+                  <Card>
+                    <Card.Img variant="top" src={img} />
+                    <Card.Body>
+                      <Card.Title>{name}</Card.Title>
+                      <Card.Subtitle>{role}</Card.Subtitle>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Container>
         </Col>
       </Row>
       {/* Footer */}
