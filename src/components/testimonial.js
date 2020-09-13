@@ -13,7 +13,7 @@ export default () => {
     {
       id: 1,
       name: 'David Champion',
-      role: 'CEO of iCloud',
+      position: 'CEO of iCloud',
       img: person001,
       message:
         'System is excelent. It has made my system user experience to become one of the easiest!',
@@ -21,7 +21,7 @@ export default () => {
     {
       id: 2,
       name: 'David Frank van Hord',
-      role: 'CEO of Marks.co',
+      position: 'CEO of Marks.co',
       img: person002,
       message:
         'I just wanted to share a quick note and let you know that you guys do a really good job.',
@@ -29,7 +29,7 @@ export default () => {
     {
       id: 3,
       name: 'Lucas Bond',
-      role: 'BOD of Skyscanner',
+      position: 'BOD of Skyscanner',
       img: person003,
       message:
         "Now it's almost like having a designer right. I just choose the page, make the change.",
@@ -37,7 +37,7 @@ export default () => {
     {
       id: 4,
       name: 'David Champion',
-      role: 'CEO of iCloud',
+      position: 'CEO of iCloud',
       img: person001,
       message:
         'System is excelent. It has made my system user experience to become one of the easiest!',
@@ -106,7 +106,7 @@ export default () => {
                   <Card.Img src={person.img} />
                   <div>
                     <Card.Title>{person.name}</Card.Title>
-                    <Card.Subtitle>{person.role}</Card.Subtitle>
+                    <Card.Subtitle>{person.position}</Card.Subtitle>
                   </div>
                 </div>
                 <Card.Body>
