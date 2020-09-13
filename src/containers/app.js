@@ -22,6 +22,7 @@ import intro001 from '../assets/images/intro-001.png';
 import intro002 from '../assets/images/intro-002.png';
 import logo from '../assets/images/logo.png';
 import LoveIcon from '../components/icons/love';
+import mapMockup from '../assets/images/map-mockup.png';
 import partner1 from '../assets/images/apple.png';
 import partner2 from '../assets/images/airbnb.png';
 import partner3 from '../assets/images/google.png';
@@ -374,6 +375,52 @@ export default () => {
                 {partners.map(partner => (
                   <Image src={partner.img} key={partner.id} />
                 ))}
+              </Col>
+            </Row>
+          </Container>
+          {/* Contact Us */}
+          <Container className="section">
+            <Row className="contact-us">
+              <Col>
+                <SectionTitle>Contact Us</SectionTitle>
+              </Col>
+            </Row>
+            <Row className="contact-us scale">
+              <Col xs={12} md={6} className="form-wrapper">
+                <Form>
+                  <Form.Group>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter your name" />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" placeholder="Enter your email" />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Subject</Form.Label>
+                    <Form.Control as="select">
+                      <option>Please select your subject</option>
+                      <option>Question</option>
+                      <option>Help</option>
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Message</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows="5"
+                      placeholder="Write your message here"
+                    />
+                  </Form.Group>
+                  <div className="button-wrapper">
+                    <Button className="submit-button" type="submit">
+                      Submit
+                    </Button>
+                  </div>
+                </Form>
+              </Col>
+              <Col xs={12} md={6} className="map-wrapper">
+                <Image src={mapMockup} alt="location" />
               </Col>
             </Row>
           </Container>

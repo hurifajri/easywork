@@ -487,6 +487,7 @@ body {
 /* Partners */
 .partners-list .col {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -494,6 +495,74 @@ body {
 .partners-list img {
   width: 50px;
   margin: 15px;
+}
+
+/* Contact Us */
+.contact-us.scale {
+  transform: scale(0.9);
+}
+
+@media (min-width: 768px) {
+  .contact-us.scale {
+    transform: scale(0.8);
+  }
+}
+
+.contact-us .form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.35em 4.5em -0.05em rgba(10, 10, 10, 0.1),
+    0 0 0 0.5px rgba(10, 10, 10, 0.02);
+}
+
+@media (min-width: 768px) {
+  .contact-us .form-wrapper {
+    transform: scaleY(1.2);
+    padding: 50px;
+  }
+}
+
+.contact-us form {
+  width: 100%;
+}
+
+.contact-us .form-label {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.contact-us .form-control {
+  border: 1.5px solid rgb(209 209 209 / 0.3);
+  height: calc(1.5em + 0.75rem + 8px);
+}
+
+.contact-us textarea.form-control {
+  height: auto;
+}
+
+.contact-us .map-wrapper {
+  overflow: hidden;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.contact-us .button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contact-us .submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue);
+  width: 150px;
+  height: 30px;
+  font-size: 0.8rem;
 }
 
 /* ---------- End of Main ---------- */
