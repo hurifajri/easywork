@@ -1,21 +1,19 @@
 import { Col, Row } from 'react-bootstrap';
-import ContactUs from '../components/contact-us';
+import Contact from '../components/contact';
 import Intro from '../components/intro';
-import OurPeople from '../components/our-people';
 import Partners from '../components/partners';
+import People from '../components/people';
 import React from 'react';
 import Testimonial from '../components/testimonial';
 
-export default () => {
-  return (
-    <Row className="main">
-      <Col>
-        <Intro />
-        <Testimonial />
-        <OurPeople />
-        <Partners />
-        <ContactUs />
-      </Col>
-    </Row>
-  );
-};
+export default () => (
+  <Row className="main">
+    <Col>
+      <Intro />
+      <Testimonial />
+      <People />
+      <Partners />
+      <Contact />
+    </Col>
+  </Row>
+);

@@ -1,7 +1,7 @@
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import mapMockup from '../assets/images/map-mockup.png';
 import React from 'react';
-import SectionTitle from '../components/section-title';
+import SectionTitle from './section-title';
 
 export default () => (
   <Container className="section">
