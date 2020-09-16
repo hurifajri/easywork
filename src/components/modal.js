@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CancelIcon from '../components/icons/cancel';
 
 const initialPerson = {
-  id: '',
+  id: 0,
   name: '',
   position: '',
   img: 'https://picsum.photos/200',
@@ -51,14 +51,11 @@ export default props => {
       onHide={() => dispatch(actions.hideModal())}
       keyboard={false}
       centered
-      dialogClassName="custom-modal"
+      dialogClassName={
+        isAdd ? 'modal-add' : isView ? 'modal-view' : 'modal-edit'
+      }
     >
-      <Modal.Body
-        style={{
-          flexDirection: isAdd ? 'column' : 'row',
-          padding: isAdd ? '20px' : 0,
-        }}
-      >
+      <Modal.Body>
         <Button
           as="span"
           className="modal-close-wrapper"
@@ -79,7 +76,7 @@ export default props => {
           <div>edit</div>
         ) : (
           <>
-            <Modal.Title>Add People</Modal.Title>
+            <h2 className="title">Add People</h2>
             <Form onSubmit={handleSubmit}>
               {/* <Form.Group>
                 <Form.File
@@ -112,7 +109,7 @@ export default props => {
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows="5"
+                  rows="4"
                   placeholder="Enter description"
                   name="description"
                   onChange={handleChange}
@@ -120,6 +117,13 @@ export default props => {
                 />
               </Form.Group>
               <div className="button-wrapper">
+                <Button
+                  className="cancel-button"
+                  type="button"
+                  onClick={() => dispatch(actions.hideModal())}
+                >
+                  Cancel
+                </Button>
                 <Button className="submit-button" type="submit">
                   Submit
                 </Button>

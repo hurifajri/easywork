@@ -38,6 +38,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-input-placeholder {
+  font-size: 0.75rem;
+}
+::-moz-placeholder {
+  font-size: 0.75rem;
+}
+:-ms-input-placeholder {
+  font-size: 0.75rem;
+}
+::-ms-input-placeholder {
+  font-size: 0.75rem;
+}
+::placeholder {
+  font-size: 0.75rem;
+}
+
 .container.section {
   margin-bottom: 50px;
 }
@@ -651,7 +667,42 @@ body {
 
 /* ---------- Start of Modal ---------- */
 
-.custom-modal {
+.modal-add {
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .modal-add {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-add {
+    max-width: 40%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-add {
+    max-width: 25%;
+  }
+}
+
+.modal-add .modal-body {
+  flex-direction: column;
+  padding: 20px;
+}
+
+.modal-add .modal-body .title {
+  width: 100%;
+  color: var(--blue);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.modal-view {
   max-width: 600px;
 }
 
@@ -665,6 +716,51 @@ body {
   justify-content: left;
   align-items: center;
   padding: 0;
+}
+
+.modal-body form {
+  width: 100%;
+}
+
+.modal-body .form-label {
+  font-size: 0.75rem;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.modal-body .form-control {
+  border: 1.5px solid rgb(209 209 209 / 0.3);
+  height: calc(1.5em + 0.75rem + 8px);
+}
+
+.modal-body textarea.form-control {
+  height: auto !important;
+}
+
+.modal-body .button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modal-body .submit-button,
+.modal-body .cancel-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue);
+  width: 125px;
+  height: 30px;
+  font-size: 0.8rem;
+}
+
+.modal-body .cancel-button,
+.modal-body .cancel-button:active {
+  background-color: transparent !important;
+  color: var(--light-black);
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .modal-body img {
@@ -693,8 +789,8 @@ body {
 }
 
 .modal-body .person .position,
-.modal-body .person .desc {
-  font-size: 0.8rem;
+.modal-body .person .description {
+  font-size: 0.7rem;
   color: var(--light-black);
 }
 
@@ -717,10 +813,6 @@ body {
   .modal-body .person .description {
     margin-right: 50px;
   }
-}
-
-.modal-body form {
-  width: 100%;
 }
 
 .modal-close-wrapper,
