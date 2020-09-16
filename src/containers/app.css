@@ -662,7 +662,7 @@ body {
 
 .modal-body {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   padding: 0;
 }
@@ -708,15 +708,34 @@ body {
   }
 }
 
-.modal-body .person .desc {
+.modal-body .person .description {
   margin-right: 10px;
   margin-bottom: 5px;
 }
 
 @media (min-width: 768px) {
-  .modal-body .person .desc {
-    margin-right: 70px;
+  .modal-body .person .description {
+    margin-right: 50px;
   }
+}
+
+.modal-body form {
+  width: 100%;
+}
+
+.modal-close-wrapper,
+.modal-close-wrapper:hover,
+.modal-close-wrapper:focus,
+.modal-close-wrapper:active {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent !important;
+  outline: none;
+  border: none !important;
+  box-shadow: none;
 }
 
 /* ---------- End of Modal ---------- */
