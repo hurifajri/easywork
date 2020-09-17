@@ -11,7 +11,9 @@
   --light-cyan: rgb(220, 240, 255);
   --white: rgb(255, 255, 255);
   --pink: rgb(255, 0, 184);
+  --light-pink: rgb(255, 238, 238);
   --red: rgb(254, 3, 2);
+  --light-red: rgb(255, 59, 59);
   --orange: rgb(255, 200, 55);
   --light-orange: rgb(255, 254, 222);
   --purple: rgb(143, 99, 197);
@@ -444,6 +446,37 @@ body {
   left: 8px;
 }
 
+.people .cancel-button {
+  background: none;
+  border: none;
+  color: var(--gray);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.people .cancel-button:active,
+.people .delete-button:active {
+  background: none !important;
+}
+
+.people .delete-button {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: none;
+  background: var(--light-pink);
+  box-shadow: var(--light-pink) 0 4px 8px -2px;
+}
+
+.people .trash-icon {
+  position: absolute;
+  top: 9px;
+  left: 8px;
+}
+
 .people .edit-button,
 .people .add-button {
   width: 55px;
@@ -493,31 +526,54 @@ body {
   outline: none;
 }
 
+.people-grid .actions-wrapper {
+  position: relative;
+}
+
+.people-grid .delete-icon-wrapper,
 .people-grid .edit-icon-wrapper {
   display: none;
-  z-index: 999;
-}
-
-.people-grid .edit-icon-wrapper:focus {
-  background: red !important;
-}
-
-.people-grid .item:hover .edit-icon-wrapper {
-  display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   top: 5px;
-  right: 19px;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: var(--light-cyan);
-  border: none !important;
   outline: none !important;
   box-shadow: none !important;
   padding: 0;
   z-index: 999;
+}
+
+.people-grid .delete-icon-wrapper {
+  left: 5px;
+  background-color: var(--white);
+  border: 0.5px solid var(--light-black);
+}
+
+.people-grid .edit-icon-wrapper {
+  right: 5px;
+  background-color: var(--light-cyan);
+  border: 0.5px solid var(--light-cyan);
+}
+
+.people-grid .item:hover .edit-icon-wrapper,
+.people-grid .item:hover .delete-icon-wrapper {
+  display: flex;
+}
+
+.people-grid .item:hover .delete-icon-wrapper svg {
+  display: none;
+}
+
+.people-grid .edit-icon-wrapper input,
+.people-grid .delete-icon-wrapper input {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  z-index: 1;
 }
 
 .people-grid .card-wrapper {

@@ -16,11 +16,6 @@ export default ({ person, actions: { isView, isEdit } }) => {
   const { modal, people } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  console.log(people);
-  console.log(`person: ${person}`);
-  console.log(`is view: ${isView}`);
-  console.log(`is edit: ${isEdit}`);
-
   // Change value dynamically based on current target name
   const [newPerson, setNewPerson] = useState(initialPerson);
 
@@ -34,7 +29,16 @@ export default ({ person, actions: { isView, isEdit } }) => {
 
   // Submitting new person
   const handleSubmit = event => {
-    dispatch(ACT.addPerson({ ...newPerson, id: people.length + 1 }));
+    isEdit
+      ? dispatch(
+          ACT.editPerson({
+            ...person,
+            name: newPerson.name,
+            position: newPerson.position,
+            description: newPerson.description,
+          })
+        )
+      : dispatch(ACT.addPerson({ ...newPerson, id: people.length + 1 }));
 
     // Reset initial state of person
     setNewPerson(initialPerson);
@@ -81,7 +85,7 @@ export default ({ person, actions: { isView, isEdit } }) => {
                   placeholder="Enter name"
                   name="name"
                   onChange={handleChange}
-                  value={person.name}
+                  defaultValue={person.name}
                 />
               </Form.Group>
               <Form.Group>
@@ -91,7 +95,7 @@ export default ({ person, actions: { isView, isEdit } }) => {
                   placeholder="Enter position"
                   name="position"
                   onChange={handleChange}
-                  value={person.position}
+                  defaultValue={person.position}
                 />
               </Form.Group>
               <Form.Group>
@@ -102,7 +106,7 @@ export default ({ person, actions: { isView, isEdit } }) => {
                   placeholder="Enter description"
                   name="description"
                   onChange={handleChange}
-                  value={person.description}
+                  defaultValue={person.description}
                 />
               </Form.Group>
               <div className="button-wrapper">
