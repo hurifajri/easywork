@@ -8,6 +8,7 @@
 
 :root {
   --cyan: rgb(9, 170, 224);
+  --light-cyan: rgb(220, 240, 255);
   --white: rgb(255, 255, 255);
   --pink: rgb(255, 0, 184);
   --red: rgb(254, 3, 2);
@@ -16,6 +17,7 @@
   --purple: rgb(143, 99, 197);
   --light-purple: rgb(238, 222, 255);
   --blue: rgb(37, 37, 132);
+  --blue-smp: rgb(43, 97, 180);
   --light-blue: rgb(172, 172, 198);
   --grey: rgb(221, 221, 221); /* partner */
   --light-grey: rgb(209, 209, 209);
@@ -32,12 +34,6 @@
 
 /* ---------- Global ---------- */
 
-body {
-  font-family: var(--font-family-sans-serif);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 ::-webkit-input-placeholder {
   font-size: 0.75rem;
 }
@@ -52,6 +48,21 @@ body {
 }
 ::placeholder {
   font-size: 0.75rem;
+}
+
+/* Reset default style */
+button:active,
+button:focus,
+button:hover {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body {
+  font-family: var(--font-family-sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container.section {
@@ -411,30 +422,30 @@ body {
   padding-bottom: 5px;
 }
 
-/* Our People */
-.our-people .right-wrapper {
+/* People */
+.people .right-wrapper {
   flex-direction: column;
 }
 
 @media (min-width: 768px) {
-  .our-people .right-wrapper {
+  .people .right-wrapper {
     flex-direction: row;
   }
 }
 
-.our-people .icon-wrapper {
+.people .icon-wrapper {
   background-color: var(--pink);
   box-shadow: var(--pink) 0 4px 8px -2px;
 }
 
-.our-people .happy-icon {
+.people .happy-icon {
   position: absolute;
   top: 9px;
   left: 8px;
 }
 
-.our-people .edit-button,
-.our-people .add-button {
+.people .edit-button,
+.people .add-button {
   width: 55px;
   height: 25px;
   font-size: 0.7rem;
@@ -447,42 +458,76 @@ body {
   align-items: center;
 }
 
-.our-people .edit-button {
+.people .edit-button {
   color: var(--orange);
   background-color: var(--light-orange);
   margin-bottom: 5px;
 }
 
 @media (min-width: 768px) {
-  .our-people .edit-button {
+  .people .edit-button {
     margin-bottom: 0;
   }
 }
 
-.our-people .add-button {
+.people .add-button {
   color: var(--purple);
   background-color: var(--light-purple);
 }
 
-.our-people-grid {
+.people-grid {
   justify-content: center;
 }
 
 @media (min-width: 992px) {
-  .our-people-grid {
+  .people-grid {
     margin-left: -60px;
     margin-right: -60px;
   }
 }
 
-.our-people-grid .item {
+.people-grid .item {
   margin: 15px 10px;
   border: none;
   background-color: transparent;
   outline: none;
 }
 
-.our-people-grid .card {
+.people-grid .edit-icon-wrapper {
+  display: none;
+  z-index: 999;
+}
+
+.people-grid .edit-icon-wrapper:focus {
+  background: red !important;
+}
+
+.people-grid .item:hover .edit-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 19px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: var(--light-cyan);
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  z-index: 999;
+}
+
+.people-grid .card-wrapper {
+  background: none !important;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+
+.people-grid .card {
   outline: none;
   border: none;
   border-radius: 0.5rem;
@@ -491,17 +536,17 @@ body {
   margin-bottom: 10px;
 }
 
-.our-people-grid .card-body {
+.people-grid .card-body {
   text-align: center;
 }
 
-.our-people-grid .card-title {
+.people-grid .card-title {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--light-black);
 }
 
-.our-people-grid .card-subtitle {
+.people-grid .card-subtitle {
   font-size: 0.6rem;
   color: var(--light-grey);
 }
@@ -667,34 +712,34 @@ body {
 
 /* ---------- Start of Modal ---------- */
 
-.modal-add {
+.modal-add-edit {
   max-width: 100%;
 }
 
 @media (min-width: 576px) {
-  .modal-add {
+  .modal-add-edit {
     max-width: 60%;
   }
 }
 
 @media (min-width: 992px) {
-  .modal-add {
+  .modal-add-edit {
     max-width: 40%;
   }
 }
 
 @media (min-width: 1200px) {
-  .modal-add {
+  .modal-add-edit {
     max-width: 25%;
   }
 }
 
-.modal-add .modal-body {
+.modal-add-edit .modal-body {
   flex-direction: column;
   padding: 20px;
 }
 
-.modal-add .modal-body .title {
+.modal-add-edit .modal-body .title {
   width: 100%;
   color: var(--blue);
   font-size: 1.2rem;
