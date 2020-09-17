@@ -1,5 +1,4 @@
-import * as actions from '../actions/types';
-
+import * as ACT from '../actions/types';
 import person004 from '../assets/images/person-004.jpg';
 import person005 from '../assets/images/person-005.jpg';
 import person006 from '../assets/images/person-006.jpg';
@@ -69,8 +68,18 @@ const initialPeople = [
 
 export default (state = initialPeople, action) => {
   switch (action.type) {
-    case actions.ADD_PERSON: {
-      return [...state, action.payload];
+    case ACT.ADD_PERSON: {
+      return [...state, action.person];
+    }
+    case ACT.EDIT_PERSON: {
+      return [
+        ...state.slice(0, action.person.id - 1),
+        { ...action.person },
+        ...state.slice(action.person.id),
+      ];
+    }
+    case ACT.DELETE_PERSON: {
+      return state.filter(person => person.id !== action.id);
     }
     default: {
       return state;

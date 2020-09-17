@@ -1,9 +1,9 @@
-import * as actions from './types';
+import * as ACT from './types';
 
 export const showModal = () => ({
-  type: actions.SHOW_MODAL,
+  type: ACT.SHOW_MODAL,
 });
 
 export const hideModal = () => ({
-  type: actions.HIDE_MODAL,
+  type: ACT.HIDE_MODAL,
 });

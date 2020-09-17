@@ -1,4 +1,4 @@
-import * as actions from '../actions';
+import * as ACT from '../actions';
 import { Button, Form, Image, Modal } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,19 +8,20 @@ const initialPerson = {
   id: 0,
   name: '',
   position: '',
-  img: 'https://picsum.photos/200',
+  img: 'https://picsum.photos/158/172', // Handle file input without backend service
   description: '',
 };
 
-export default props => {
-  const { modal, people, person, status } = useSelector(state => state);
+export default ({ person, actions: { isView, isEdit } }) => {
+  const { modal, people } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const isAdd = status === 'add';
-  const isView = status === 'view';
-  const isEdit = status === 'edit';
+  console.log(people);
+  console.log(`person: ${person}`);
+  console.log(`is view: ${isView}`);
+  console.log(`is edit: ${isEdit}`);
 
-  // Change value based on current target name
+  // Change value dynamically based on current target name
   const [newPerson, setNewPerson] = useState(initialPerson);
 
   // Set value from user input
@@ -31,16 +32,15 @@ export default props => {
     setNewPerson({ ...newPerson, [name]: value });
   };
 
-  // Submit new person
+  // Submitting new person
   const handleSubmit = event => {
-    // Set new person
-    dispatch(actions.addPerson({ ...newPerson, id: people.length + 1 }));
+    dispatch(ACT.addPerson({ ...newPerson, id: people.length + 1 }));
 
     // Reset initial state of person
     setNewPerson(initialPerson);
 
     // Hide modal
-    dispatch(actions.hideModal());
+    dispatch(ACT.hideModal());
 
     event.preventDefault();
   };
@@ -48,18 +48,16 @@ export default props => {
   return (
     <Modal
       show={modal}
-      onHide={() => dispatch(actions.hideModal())}
+      onHide={() => dispatch(ACT.hideModal())}
       keyboard={false}
       centered
-      dialogClassName={
-        isAdd ? 'modal-add' : isView ? 'modal-view' : 'modal-edit'
-      }
+      dialogClassName={isView ? 'modal-view' : 'modal-add-edit'}
     >
       <Modal.Body>
         <Button
           as="span"
           className="modal-close-wrapper"
-          onClick={() => dispatch(actions.hideModal())}
+          onClick={() => dispatch(ACT.hideModal())}
         >
           <CancelIcon color="var(--blue)" className="modal-close" />
         </Button>
@@ -73,18 +71,58 @@ export default props => {
             </div>
           </>
         ) : person && isEdit ? (
-          <div>edit</div>
+          <>
+            <h2 className="title">Edit People</h2>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name"
+                  name="name"
+                  onChange={handleChange}
+                  value={person.name}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Position</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter position"
+                  name="position"
+                  onChange={handleChange}
+                  value={person.position}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows="4"
+                  placeholder="Enter description"
+                  name="description"
+                  onChange={handleChange}
+                  value={person.description}
+                />
+              </Form.Group>
+              <div className="button-wrapper">
+                <Button
+                  className="cancel-button"
+                  type="button"
+                  onClick={() => dispatch(ACT.hideModal())}
+                >
+                  Cancel
+                </Button>
+                <Button className="submit-button" type="submit">
+                  Save
+                </Button>
+              </div>
+            </Form>
+          </>
         ) : (
           <>
             <h2 className="title">Add People</h2>
             <Form onSubmit={handleSubmit}>
-              {/* <Form.Group>
-                <Form.File
-                  id="exampleFormControlFile1"
-                  label="Select picture"
-                />
-                <CancelIcon color="var(--blue)" className="modal-close" />
-              </Form.Group> */}
               <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
@@ -120,7 +158,7 @@ export default props => {
                 <Button
                   className="cancel-button"
                   type="button"
-                  onClick={() => dispatch(actions.hideModal())}
+                  onClick={() => dispatch(ACT.hideModal())}
                 >
                   Cancel
                 </Button>

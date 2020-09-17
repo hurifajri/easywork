@@ -1,43 +1,54 @@
-import * as actions from '../actions';
+import * as ACT from '../actions';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import EditIcon from '../components/icons/edit';
 import HappyIcon from './icons/happy';
 import Modal from './modal';
-import React from 'react';
 import SectionHeader from '../components/section-header';
 
 export default () => {
-  const { modal, people, person } = useSelector(state => state);
+  const { modal, people } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  console.log(people);
-  console.log(person);
+  const [currentPerson, setCurrentPerson] = useState({});
+  const [actions, setActions] = useState({ isView: false, isEdit: false });
 
-  // Get detail of person in a modal
-  const getPerson = person => {
-    // Get person data
-    dispatch(actions.getPerson(person));
+  // Send the detail of person to a modal
+  const viewPerson = person => {
+    // Set current action to view
+    setActions({ isView: true, isEdit: false });
 
-    // Set status of action to view
-    dispatch(actions.isView());
+    // Get the selected person by user
+    setCurrentPerson(person);
 
-    // Call modal
-    dispatch(actions.showModal());
+    // Call the modal
+    dispatch(ACT.showModal());
   };
 
-  // Add a new person
-  const addPerson = () => {
-    // Set status of action to add
-    dispatch(actions.isAdd());
+  const editPerson = person => {
+    // Set current action to edit
+    setActions({ isView: false, isEdit: true });
 
-    // Call modal
-    dispatch(actions.showModal());
+    dispatch(ACT.editPerson(person));
+
+    // Call the modal
+    dispatch(ACT.showModal());
+  };
+
+  // Open a new modal to fill out for adding new person
+  const addPerson = () => {
+    // Set current action is not view nor edit
+    setActions({ isView: false, isEdit: false });
+
+    // Call the modal. of course.
+    dispatch(ACT.showModal());
   };
 
   return (
     <>
       <Container className="section">
-        <Row className="our-people">
+        <Row className="people">
           <Col>
             <SectionHeader
               title="Our important people is listed here"
@@ -52,7 +63,13 @@ export default () => {
               }
               button={
                 <>
-                  <Button className="edit-button">Edit</Button>
+                  <Button
+                    className="edit-button"
+                    disabled={!currentPerson && 'disabled'}
+                    onClick={() => editPerson(currentPerson)}
+                  >
+                    Edit
+                  </Button>
                   <Button className="add-button" onClick={() => addPerson()}>
                     Add
                   </Button>
@@ -61,32 +78,34 @@ export default () => {
             />
           </Col>
         </Row>
-        <Row className="our-people-grid">
-          {people?.map(person => (
-            <Col
-              className="item"
-              xs={12}
-              sm={5}
-              md={3}
-              lg={2}
-              xl={2}
-              key={person.id}
-              as="button"
-              onClick={() => getPerson(person)}
-            >
-              <Card>
-                <Card.Img variant="top" src={person.img} />
-                <Card.Body>
-                  <Card.Title>{person.name}</Card.Title>
-                  <Card.Subtitle>{person.position}</Card.Subtitle>
-                </Card.Body>
-              </Card>
+        <Row className="people-grid">
+          {people.map(person => (
+            <Col className="item" xs={12} sm={5} md={3} lg={2} key={person.id}>
+              <Button
+                as="div"
+                className="edit-icon-wrapper"
+                onClick={() => setCurrentPerson(person)}
+              >
+                <EditIcon size={8} color="var(--blue-smp)" />
+              </Button>
+              <Button
+                onClick={() => viewPerson(person)}
+                className="card-wrapper"
+              >
+                <Card>
+                  <Card.Img variant="top" src={person.img} />
+                  <Card.Body>
+                    <Card.Title>{person.name}</Card.Title>
+                    <Card.Subtitle>{person.position}</Card.Subtitle>
+                  </Card.Body>
+                </Card>
+              </Button>
             </Col>
           ))}
         </Row>
       </Container>
 
-      <Modal show={modal} />
+      <Modal show={modal} person={currentPerson} actions={actions} />
     </>
   );
 };

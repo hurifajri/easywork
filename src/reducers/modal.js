@@ -1,11 +1,11 @@
-import * as actions from '../actions/types';
+import * as ACT from '../actions/types';
 
 export default (state = false, action) => {
   switch (action.type) {
-    case actions.SHOW_MODAL: {
+    case ACT.SHOW_MODAL: {
       return true;
     }
-    case actions.HIDE_MODAL: {
+    case ACT.HIDE_MODAL: {
       return false;
     }
     default: {
