@@ -33,9 +33,9 @@ export default ({ person, actions: { isView, isEdit } }) => {
       ? dispatch(
           ACT.editPerson({
             ...person,
-            name: newPerson.name,
-            position: newPerson.position,
-            description: newPerson.description,
+            name: newPerson.name || person.name,
+            position: newPerson.position || person.position,
+            description: newPerson.description || person.description,
           })
         )
       : dispatch(ACT.addPerson({ ...newPerson, id: people.length + 1 }));

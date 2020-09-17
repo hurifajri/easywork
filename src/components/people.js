@@ -72,6 +72,11 @@ export default () => {
     dispatch(ACT.showModal());
   };
 
+  const deletePerson = () => {
+    dispatch(ACT.deletePerson(currentPerson.id));
+    setCheckedDelete(false);
+  };
+
   return (
     <>
       <Container className="section">
@@ -100,9 +105,7 @@ export default () => {
                     <Button
                       as="span"
                       className="delete-button"
-                      onClick={() =>
-                        dispatch(ACT.deletePerson(currentPerson.id))
-                      }
+                      onClick={() => deletePerson()}
                     >
                       <TrashIcon
                         size={13}
